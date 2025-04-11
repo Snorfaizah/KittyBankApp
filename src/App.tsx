@@ -4,7 +4,7 @@
  *
  * @format
  */
-
+import 'react-native-get-random-values';
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -16,7 +16,7 @@ import {
   View,
   SafeAreaView
 } from 'react-native';
-
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import {
   Colors,
   DebugInstructions,
@@ -25,6 +25,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import KittyyBank from '../src/components/KittyBank/KittyBank'
+import AppStackNav from './AppStackNav';
+// import { enableScreens } from 'react-native-screens';
+// enableScreens();
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -75,10 +78,9 @@ function App(): React.JSX.Element {
   const safePadding = '5%';
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff', padding: 20 }}>
-    <StatusBar barStyle="dark-content" />
-    <KittyyBank />
-  </SafeAreaView>
+    <NavigationContainer>
+      <AppStackNav/>
+  </NavigationContainer>
   );
 }
 

@@ -29,7 +29,7 @@ const KittyBank = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.balance}>Balance: ${state.balance.toFixed(2)}</Text>
+      <Text style={styles.balance}>Balance: RM{state.balance.toFixed(2)}</Text>
 
       <TextInput
         style={styles.input}
@@ -47,7 +47,7 @@ const KittyBank = () => {
       <Text style={styles.transaction}>Transactions:</Text>
       {state.transactions.map((tx) => (
         <Text key={tx.id} style={styles.transaction}>
-          {tx.type === 'deposit' ? '➕' : '➖'} ${tx.amount} -{' '}
+          {tx.type === 'deposit' ? '➕' : '➖'} RM{tx.amount} -{' '}
           {new Date(tx.date).toLocaleString()}
         </Text>
       ))}

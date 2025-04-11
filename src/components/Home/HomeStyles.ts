@@ -1,12 +1,17 @@
 // src/components/PiggyBank/piggyBankStyles.ts
 import { StyleSheet } from 'react-native';
 
-const kittyBankStyles = StyleSheet.create({
+const HomeStyles = StyleSheet.create({
+    view:{
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: '#ffe8fd'
+    },
   container: {
     margin: 20,
-    marginTop:100,
     padding: 16,
-    backgroundColor: '#FFF',
+    backgroundColor: '#FEF9E7',
     borderRadius: 12,
     shadowColor: '#000',
     shadowOpacity: 0.1,
@@ -17,7 +22,6 @@ const kittyBankStyles = StyleSheet.create({
     fontSize: 32,
     color: '#27AE60',
     textAlign: 'center',
-    fontWeight: 'bold' 
   },
   input: {
     borderWidth: 1,
@@ -38,4 +42,4 @@ const kittyBankStyles = StyleSheet.create({
   },
 });
 
-export default kittyBankStyles;
+export default HomeStyles;
