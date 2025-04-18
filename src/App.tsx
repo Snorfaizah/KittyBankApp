@@ -26,6 +26,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import KittyyBank from '../src/components/KittyBank/KittyBank'
 import AppStackNav from './AppStackNav';
+import { NativeWindStyleSheet } from 'nativewind';
 // import { enableScreens } from 'react-native-screens';
 // enableScreens();
 

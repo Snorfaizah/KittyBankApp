@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput, ScrollView } from 'react-native';
 import styles from './KittyBanStyles'
-import { KittyBankState } from '../../types/KittyBankTypes';
+import { KittyBankState } from '../../types/kittyBankTypes';
 import { deposit, withdraw } from './KittyBankLogic';
 
 const KittyBank = () => {
