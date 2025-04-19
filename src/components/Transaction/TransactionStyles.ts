@@ -1,39 +1,41 @@
+// src/components/PiggyBank/piggyBankStyles.ts
 import { StyleSheet } from 'react-native';
-const styles = StyleSheet.create({
-    header: {
-        fontWeight: 'bold',
-        fontSize: 18,
-        marginTop: 20,
-        paddingLeft: 10,
-      },
-      card: {
-        borderRadius: 10,
-        padding: 10,
-      },
-      depositCard: {
-        backgroundColor: '#e0f7fa', // Light blue for deposits
-      },
-      withdrawCard: {
-        backgroundColor: '#ffebee', // Light red for withdrawals
-      },
-      title: {
-        fontSize: 16,
-        fontWeight: '600',
-        flexDirection: 'row',
-        alignItems: 'center',
-      },
-      icon: {
-        marginRight: 10,
-      },
-      amount: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 8,
-      },
-      date: {
-        fontSize: 14,
-        color: 'gray',
-      },
-  });
-  
-export default styles;
+
+const transactionStyles = StyleSheet.create({
+  container: {
+    margin: 20,
+    marginTop:100,
+    padding: 16,
+    backgroundColor: '#FFF',
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 6,
+  },
+  balance: {
+    fontSize: 32,
+    color: '#27AE60',
+    textAlign: 'center',
+    fontWeight: 'bold' 
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    fontSize: 18,
+    marginTop: 16,
+    borderRadius: 8,
+  },
+  buttonGroup: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 20,
+  },
+  transaction: {
+    marginTop: 12,
+    fontSize: 16,
+  },
+});
+
+export default transactionStyles;

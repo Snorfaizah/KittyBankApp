@@ -6,7 +6,7 @@ const kittyBankStyles = StyleSheet.create({
     margin: 20,
     marginTop:100,
     padding: 16,
-    backgroundColor: '#FFF',
+    // backgroundColor: '#FFF',
     borderRadius: 12,
     shadowColor: '#000',
     shadowOpacity: 0.1,
@@ -36,6 +36,15 @@ const kittyBankStyles = StyleSheet.create({
     marginTop: 12,
     fontSize: 16,
   },
+  inputCard:{
+    backgroundColor: '#FFF',
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 6,
+    padding: 16,
+  }
 });
 
 export default kittyBankStyles;

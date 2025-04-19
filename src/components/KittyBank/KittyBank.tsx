@@ -2,10 +2,13 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput, ScrollView } from 'react-native';
 import styles from './KittyBanStyles'
-import { KittyBankState } from '../../types/kittyBankTypes';
+import { KittyBankState,alertState } from '../../types/kittyBankTypes';
 import { deposit, withdraw } from './KittyBankLogic';
+import  TransactionList  from '../Transaction/Transaction'
+import AlertPopup from '../shareable/Alert/Alert'
 
 const KittyBank = () => {
+  const [alert, setAlert] = useState<{ message: string; variant: 'success' | 'warning' | 'danger' } | null>(null);
   const [state, setState] = useState<KittyBankState>({
     balance: 0,
     transactions: [],
@@ -14,43 +17,45 @@ const KittyBank = () => {
   const [amount, setAmount] = useState<number>(0);
 
   const handleDeposit = () => {
+    if (amount === 0 || Number.isNaN(amount)) {
+      setAlert({ variant: 'warning', message: "Amount can't be zero!" });
+      return;
+    }
     setState(deposit(state, amount));
     setAmount(0);
+    setAlert(null);
   };
 
   const handleWithdraw = () => {
-    if (amount > state.balance) {
-      alert('Not enough balance!');
+    if (amount > state.balance || Number.isNaN(amount)) {
+      setAlert({ variant: 'warning', message: "Not enough balance!" });
       return;
     }
     setState(withdraw(state, amount));
     setAmount(0);
+    setAlert(null);
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.balance}>Balance: RM{state.balance.toFixed(2)}</Text>
-
-      <TextInput
-        style={styles.input}
-        keyboardType="numeric"
-        value={amount.toString()}
-        onChangeText={(text) => setAmount(Number(text))}
-        placeholder="Enter amount"
-      />
-
-      <View style={styles.buttonGroup}>
-        <Button title="Deposit" onPress={handleDeposit} />
-        <Button title="Withdraw" onPress={handleWithdraw} />
+      <View style={styles.inputCard}>
+        <Text style={styles.balance}>Balance: RM{state.balance.toFixed(2)}</Text>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          value={amount.toString()}
+          onChangeText={(text) => setAmount(Number(text))}
+          placeholder="Enter amount"
+        />
+        {alert && <AlertPopup variant={alert.variant} message={alert.message}  onClose={() => setAlert(null)} />}
+        <View style={styles.buttonGroup}>
+          <Button title="Deposit" onPress={handleDeposit} />
+          <Button title="Withdraw" onPress={handleWithdraw} />
+        </View>
       </View>
 
-      <Text style={styles.transaction}>Transactions:</Text>
-      {state.transactions.map((tx) => (
-        <Text key={tx.id} style={styles.transaction}>
-          {tx.type === 'deposit' ? '➕' : '➖'} RM{tx.amount} -{' '}
-          {new Date(tx.date).toLocaleString()}
-        </Text>
-      ))}
+      <TransactionList transactions={state.transactions}/>
+    
     </ScrollView>
   );
 };
